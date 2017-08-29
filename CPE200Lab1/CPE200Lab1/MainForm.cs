@@ -76,19 +76,37 @@ namespace CPE200Lab1
             {
                 return;
             }
-            operate = ((Button)sender).Text;
-            switch (operate)
+
+
+            if (((Button)sender).Text == "%")
             {
-                case "+":
-                case "-":
-                case "X":
-                case "÷":
-                    firstOperand = lblDisplay.Text;
-                    isAfterOperater = true;
-                    break;
-                case "%":
-                    // your code here
-                    break;
+
+                lblDisplay.Text = ((Convert.ToDouble(firstOperand)) * (Convert.ToDouble(lblDisplay.Text)) / 100).ToString();
+                lblDisplay.Text = lblDisplay.Text;
+            }
+            
+            else if (((Button)sender).Text == "sqrt")
+            {
+
+                lblDisplay.Text = ((Math.Sqrt(Convert.ToDouble(lblDisplay.Text)))).ToString();
+                lblDisplay.Text = lblDisplay.Text;
+            }
+            else
+            {
+                operate = ((Button)sender).Text;
+                switch (operate)
+                {
+                    case "+":
+                    case "-":
+                    case "X":
+                    case "÷":
+                        firstOperand = lblDisplay.Text;
+                        isAfterOperater = true;
+                        break;
+                    case "1/x":
+                        lblDisplay.Text = (1 / (Convert.ToDouble(lblDisplay.Text))).ToString();
+                        lblDisplay.Text = lblDisplay.Text;
+                }
             }
             isAllowBack = false;
         }
